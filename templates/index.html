@@ -1,0 +1,39 @@
+{% extends 'layout.html' %}
+
+{% block myCSS %}
+<link rel="stylesheet" type="text/css" href="{{url_for('static', filename='css/style.css')}}" >
+{% endblock %}
+
+{% block title %}
+Twitter Scraper - Home
+{% endblock %}
+
+{% block body %}
+<form action="/twitter-data" method="POST">
+  <div class="wrapper">
+    <div id="survey_options">
+      <h4 style="color:black">Twitter Keyword Data Scraper</h4>
+      <input type="number" name="no_of_tweets" class="survey_options" size="50" placeholder="No. of tweets to scrape" required>
+      
+      <hr style="color:black">
+      <label for="startDate" style="color:black">Scrape Tweets From</label>
+      <input id="startDate" name="startDate" class="form-control" type="date" required/>
+
+
+      <label for="endDate" style="color:black">To</label>
+      <input id="endtDate" name="endDate" class="form-control" type="date" required/>
+      <hr style="color:black">
+
+      <input type="text" name="keywords" class="survey_options" size="50" placeholder="Enter a keyword to scrape" required>
+      
+    </div>
+    <div class="controls">
+      <a href="#" id="add_more_fields"><i class="fa fa-plus"></i>Add More</a>
+      <a href="#" id="remove_fields"><i class="fa fa-plus"></i>Remove Field</a>
+      <hr>
+      <button type="submit" id="submit-button"> <i class="fa fa-hourglass-start"></i></fa-hourglass-start> Start Scraping</button>
+    </div>
+  </div>
+</form>
+<script src="{{url_for('static', filename='js/script.js')}}" ></script>
+{% endblock %}

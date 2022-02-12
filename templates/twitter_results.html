@@ -1,0 +1,59 @@
+{% extends 'layout.html' %}
+
+
+
+{% block title %}
+Twitter Data - Results
+{% endblock %}
+
+{% block body %}
+  <h4 style="color:black" class="my-3 text-center">Data scrapped from Twitter</h4>
+  <hr class="my-12"/>
+  <table id="twitter-data" class="table">
+    <thead>
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">URL</th>
+        <th scope="col">Tweet</th>
+        <th scope="col">Date</th>
+        <th scope="col">Username</th>
+        <th scope="col">Verified</th>
+        <th scope="col">Followers</th>
+        <th scope="col">Following</th>
+        <th scope="col">Status</th>
+        <th scope="col">Replies</th>
+        <th scope="col">Retweets</th>
+        <th scope="col">Tweet Likes</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% for post in data %}
+      <tr>
+        <td>{{post['tweet_id']}}</td>
+        <td> <a href="{{post['tweet_url']}}" target="_blank">Click to Open</a> </td>
+        <td>{{post['tweet_content']}}</td>
+        <td>{{post['tweeted_on']}}</td>
+        <td>{{post['username']}}</td>
+        <td>{{post['verified']}}</td>
+        <td>{{post['follower_count']}}</td>
+        <td>{{post['following_count']}}</td>
+        <td>{{post['status_count']}}</td>
+        <td>{{post['reply_count']}}</td>
+        <td>{{post['retweet_count']}}</td>
+        <td>{{post['tweet_likes']}}</td>
+      </tr>
+      {% endfor %}
+    </tbody>
+  </table>
+  <hr class="my-4"/>
+<center>
+<a href="/download-scraped-tweets" class="btn btn-primary text-center">Download Last Scraped Data</a>
+<hr>
+<a href="/download-all-tweets" class="btn btn-primary text-center">Download All Data</a>
+</center>  
+<script type="text/javascript">
+  $(document).ready( function() {
+    $('#twitter-data').DataTable();
+  });
+</script>
+{% endblock %}

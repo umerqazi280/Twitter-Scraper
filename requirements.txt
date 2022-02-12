@@ -1,0 +1,8 @@
+Flask
+pandas
+requests
+python-.env
+Flask-SQLAlchemy
+psycopg2
+postgres
+git+https://github.com/JustAnotherArchivist/snscrape.git
